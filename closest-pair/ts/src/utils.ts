@@ -1,12 +1,11 @@
-type Point = { x: number, y: number };
+type Point = [number, number];
 
-export function buildArr<T>(size: number, getItem: (i: number, xs: T[]) => T): T[] {
+export function buildArr<T>(
+  size: number, 
+  getItem: (i: number, xs: T[]) => T
+): T[] {
   const rtnArr: T[] = [];
-
-  for(let i = 0; i < size; i++){
-    rtnArr.push(getItem(i, rtnArr));
-  }
-
+  for(let i = 0; i < size; i++) rtnArr.push(getItem(i, rtnArr));
   return rtnArr;
 }
 
@@ -20,10 +19,10 @@ export function randomPoint(
   xRange: [number, number],
   yRange: [number, number],
 ): Point {
-  return {
-    x: randomInt(xRange[0], xRange[1]),
-    y: randomInt(yRange[0], yRange[1]),
-  }
+  return [
+    randomInt(xRange[0], xRange[1]),
+    randomInt(yRange[0], yRange[1]),
+  ];
 }
 
 export function randomPoints(
@@ -32,4 +31,10 @@ export function randomPoints(
   yRange: [number, number]
 ): Array<Point> {
   return buildArr(size, _ => randomPoint(xRange, yRange))
+}
+
+export function computeDistance(a: Point, b: Point){
+  return Math.sqrt(
+    Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2)
+  )
 }
