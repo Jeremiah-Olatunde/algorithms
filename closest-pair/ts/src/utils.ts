@@ -38,3 +38,8 @@ export function computeDistance(a: Point, b: Point){
     Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2)
   )
 }
+
+export function toDesmosPointList(points: Point[]): string {
+  return `[${points.map(([x, y]) => `(${x}, ${y})`).join(",")}]`
+}
+
