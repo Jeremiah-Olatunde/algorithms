@@ -1,4 +1,4 @@
-import { type Point } from "./utils";
+import { type Point } from "./points";
 import { closestPair } from "./naive";
 import { deepStrictEqual } from "assert/strict";
 

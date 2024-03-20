@@ -1,5 +1,5 @@
 
-import { type Point, computeDistance } from "./utils.js";
+import { type Point, computeDistance } from "./points.js";
 
 // store the current minimum distance (initialize at infinity)
 // compute the distance between ever possible pair of points

@@ -1,6 +1,6 @@
 export type Point = [number, number];
 
-export function buildArr<T>(
+function buildArr<T>(
   size: number, 
   getItem: (i: number, xs: T[]) => T
 ): T[] {
@@ -9,9 +9,7 @@ export function buildArr<T>(
   return rtnArr;
 }
 
-export function random(){ return Math.random(); }
-
-export function randomInt(lowerBound: number, upperBound: number): number {
+function randomInt(lowerBound: number, upperBound: number): number {
   return Math.floor(Math.random() * (upperBound - lowerBound)) + lowerBound;
 }
 
@@ -33,10 +31,14 @@ export function randomPoints(
   return buildArr(size, _ => randomPoint(xRange, yRange))
 }
 
-export function computeDistance(a: Point, b: Point){
+export function computeDistance(p: Point, q: Point): number {
   return Math.sqrt(
-    Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2)
-  )
+    Math.pow(q[0] - p[0], 2) + Math.pow(q[1] - p[1], 2)
+  );
+}
+
+export function computeDistanceSquared(p: Point, q: Point): number {
+  return Math.pow(q[0] - p[0], 2) + Math.pow(q[1] - p[1], 2);
 }
 
 export function toDesmosPointList(points: Point[]): string {
