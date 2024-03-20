@@ -1,7 +1,7 @@
 import { type Point } from "./points";
 import { deepStrictEqual } from "assert/strict";
 
-export function runSuite(closestPair: (points: Point[]) => [Point, Point], id: string = "") : void {
+export function runTests(closestPair: (points: Point[]) => [Point, Point], id: string = "") : void {
   {
     // trivial case
     // [(0, 0),(1, 1),(3, 3)]
