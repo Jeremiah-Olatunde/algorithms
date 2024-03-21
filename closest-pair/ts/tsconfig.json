@@ -1,5 +1,8 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist"
-  },
+    "outDir": "./dist",
+    "noEmitOnError": false,
+    "lib": ["ES2023"]
+  }
 }
