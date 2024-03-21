@@ -1,14 +1,15 @@
 import { type Point } from "./points";
-import { deepStrictEqual } from "assert/strict";
+import { strictEqual } from "assert";
 
-export function runTests(closestPair: (points: Point[]) => [Point, Point], id: string = "") : void {
+export function runTests(closestPair: (points: Point[]) => number, id: string = "") : void {
+  
   {
     // trivial case
     // [(0, 0),(1, 1),(3, 3)]
     // [(0, 0),(1, 1)]
     const points: Point[] = [ [0, 0], [1, 1], [3, 3] ];
-    const pair: [Point, Point] = [ [ 0, 0 ], [ 1, 1 ] ]; 
-    deepStrictEqual(closestPair(points), pair, `${id}  => FAILED TEST 1`);
+    const minD: number = Math.SQRT2; 
+    strictEqual(closestPair(points), minD, `${id}  => FAILED TEST 0`);
   }
   
   
@@ -17,8 +18,8 @@ export function runTests(closestPair: (points: Point[]) => [Point, Point], id: s
     // [(5, 0),(5, 8),(1, 7),(1, 4),(2, 5)]
     // [(1, 4),(2, 5)]
     const points: Point[] = [ [ 5, 0 ], [ 5, 8 ], [ 1, 7 ], [ 1, 4 ], [ 2, 5 ] ];
-    const pair: [Point, Point] = [ [ 1, 4 ], [ 2, 5 ] ];
-    deepStrictEqual(closestPair(points), pair);
+    const minD: number = Math.SQRT2;
+    strictEqual(closestPair(points), minD, `${id}  => FAILED TEST 1`);
   }
   
   {
@@ -26,8 +27,8 @@ export function runTests(closestPair: (points: Point[]) => [Point, Point], id: s
     // [(-1, -9),(-5, -9),(-9, -1),(-4, -3),(-9, -6)]
     // [(-1, -9),(-5, -9)]
     const points: Point[] = [ [ -1, -9 ], [ -5, -9 ], [ -9, -1 ], [ -4, -3 ], [ -9, -6 ] ];
-    const pair: [Point, Point] = [ [ -1, -9 ], [ -5, -9 ] ]; 
-    deepStrictEqual(closestPair(points), pair, `${id} => FAILED TEST 2`);
+    const minD: number = 4; 
+    strictEqual(closestPair(points), minD, `${id} => FAILED TEST 2`);
   }
   
   {
@@ -35,8 +36,8 @@ export function runTests(closestPair: (points: Point[]) => [Point, Point], id: s
     // [(-5, 2),(-1, 2),(-5, 4),(5, 1),(3, 0)]
     // [(-5, 2),(-5, 4)]
     const points: Point[] = [ [ -5, 2 ], [ -1, 2 ], [ -5, 4 ], [ 5, 1 ], [ 3, 0 ] ];
-    const pair: [Point, Point] = [ [ -5, 2 ], [ -5, 4 ] ]; 
-    deepStrictEqual(closestPair(points), pair, `${id} => FAILED TEST 3`);
+    const minD: number = 2; 
+    strictEqual(closestPair(points), minD, `${id} => FAILED TEST 3`);
   }
   
   {
@@ -65,8 +66,8 @@ export function runTests(closestPair: (points: Point[]) => [Point, Point], id: s
       [ 62, 631 ],  [ 881, 577 ], [ 74, 486 ],  [ 938, 246 ], [ 738, 3 ]
     ];
     
-    const pair: [Point, Point] = [ [ 726, 63 ], [ 730, 57 ] ];
-    deepStrictEqual(closestPair(points), pair, `${id} => FAILED TEST 4`);
+    const minD: number = 7.211102550927978;
+    strictEqual(closestPair(points), minD, `${id} => FAILED TEST 4`);
   }
   
   {
@@ -95,8 +96,8 @@ export function runTests(closestPair: (points: Point[]) => [Point, Point], id: s
       [ 160, 149 ],   [ 395, 8 ],     [ 102, 114 ],   [ -328, -264 ], [ 301, -427 ]
     ];
   
-    const pair: [Point, Point] = [ [ -75, 1 ], [ -72, -1 ] ]; 
-    deepStrictEqual(closestPair(points), pair, `${id} => FAILED TEST 5`);
+    const minD: number = 3.605551275463989; 
+    strictEqual(closestPair(points), minD, `${id} => FAILED TEST 5`);
   }
 
 }  
